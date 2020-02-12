@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {UseHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
+import {AuthContext} from "../context/AuthContext";
 
 export const AuthPage = () => {
+    const auth = useContext(AuthContext);
     const message = useMessage()
     const {loading, request, error, clearError} = UseHttp();
     const [form, setForm] = useState({
@@ -19,6 +21,10 @@ export const AuthPage = () => {
         clearError();
     }, [error, message, clearError]);
 
+    useEffect(() => {
+        window.M.updateTextFields()
+    }, [])
+
 
     const registerHandler = async () => {
         try {
@@ -33,7 +39,7 @@ export const AuthPage = () => {
     const loginHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', {...form});
-            message(data.message);
+            auth.login(data.token, data.userId)
         } catch (e) {
 
         }
@@ -53,6 +59,7 @@ export const AuthPage = () => {
                                        type="email"
                                        name='email'
                                        onChange={changeHandler}
+                                       value={form.email}
                                        className="validate yellow-input" />
                                  <label htmlFor="email">Email</label>
                             </div>
@@ -61,6 +68,7 @@ export const AuthPage = () => {
                                        id="password"
                                        type="password"
                                        name='password'
+                                       value={form.password}
                                        onChange={changeHandler}
                                        className="validate yellow-input" />
                                 <label htmlFor="password">Password</label>
