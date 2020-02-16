@@ -10,7 +10,7 @@
     "clients:install": "npm run install --prefix clients",
     "clients:build": "npm run build --prefix clients",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run clients\" ",
-    "heroku-postbuild": "cross-env NODE_ENV=production node app.js"
+    "heroku-postbuild": "node app.js"
   },
   "keywords": [
     "react",
