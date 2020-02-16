@@ -16,6 +16,9 @@
     "react",
     "mongo"
   ],
+  "engines": {
+    "node": "12.x"
+  },
   "author": "Nazar Stoliar <batinak94@gmail.com>",
   "license": "ISC",
   "dependencies": {
