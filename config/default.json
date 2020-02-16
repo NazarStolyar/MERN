@@ -1,6 +1,6 @@
 {
-  "port": 5000,
+  "port": 80,
   "jwtSecret": "nazar stoluar",
   "mongoUri": "mongodb+srv://nazar:knopka477625353@cluster0-oihz8.azure.mongodb.net/app?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:5000"
+  "baseUrl": "https://less-link.herokuapp.com/"
 }
